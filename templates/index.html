@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Image Generator</title>
+</head>
+<body>
+    <h1>Text to Image Generator</h1>
+
+    <form action="/generate_image" method="post">
+        <label for="prompt">Enter Text:</label>
+        <input type="text" id="prompt" name="prompt" required>
+        <br>
+        <label for="num_steps">Number of Steps:</label>
+        <input type="range" id="num_steps" name="num_steps" min="1" max="200" value="100">
+        <br>
+        <label for="guidance_scale">Guidance Scale:</label>
+        <input type="range" id="guidance_scale" name="guidance_scale" min="1" max="30" value="15">
+        <br>
+        <button type="submit">Generate Image</button>
+    </form>
+
+    {% if image_data %}
+        <h2>Generated Image</h2>
+        <img src="data:image/png;base64,{{ image_data }}" alt="Generated Image">
+    {% endif %}
+</body>
+</html>
